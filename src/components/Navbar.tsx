@@ -30,8 +30,8 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-5xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
-        <a href="#" className="text-sm font-semibold text-foreground tracking-tight">
-          akmal<span className="text-primary">.</span>dev
+        <a href="#" className="font-display text-sm font-bold text-foreground tracking-tight">
+          akmal<span className="text-primary">_</span>sec
         </a>
 
         <div className="hidden md:flex items-center gap-1">
@@ -39,16 +39,16 @@ const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className="px-3 py-1.5 text-[13px] text-muted-foreground hover:text-foreground rounded-lg hover:bg-accent/50 transition-all duration-200"
+              className="px-3 py-1.5 text-[13px] font-mono text-muted-foreground hover:text-foreground rounded-lg hover:bg-accent/50 transition-all duration-200"
             >
               {l.label}
             </a>
           ))}
           <a
-            href="mailto:akmalmuhammed93@gmail.com"
-            className="ml-3 px-4 py-1.5 text-[13px] font-medium rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+            href="#contact"
+            className="ml-3 px-4 py-1.5 text-[13px] font-mono font-medium rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
           >
-            Hire Me
+            Hire Me →
           </a>
         </div>
 
@@ -71,7 +71,7 @@ const Navbar = () => {
                   key={l.href}
                   href={l.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="block py-2.5 text-sm font-mono text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {l.label}
                 </a>
