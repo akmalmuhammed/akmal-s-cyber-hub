@@ -1,100 +1,76 @@
-import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { GitCommitHorizontal, Calendar } from "lucide-react";
 
 const experiences = [
   {
     role: "Security Consultant – Information Security",
-    prevRole: "Security Analyst (Feb 2024 – Feb 2025)",
-    company: "INTALEQ Technology and Consulting Services | Aspire Zone Foundation",
+    company: "INTALEQ Technology & Consulting | Aspire Zone Foundation",
     location: "Doha, Qatar",
     period: "Feb 2024 – Present",
-    highlights: [
-      "Conducted security posture assessments across SIEM, XDR, and cloud environments, identifying gaps and recommending risk-based improvements.",
-      "Built and maintained Cortex XSOAR playbooks for enrichment, containment, and response, significantly improving investigation time.",
-      "Participated in investigation and containment of ransomware activity affecting critical infrastructure.",
-      "Led proactive threat hunting targeting APT39, MuddyWater, ClickFix using MITRE ATT&CK-mapped hypotheses.",
-      "Provided live SOC monitoring for FIFA Intercontinental Cup, Arab Cup, and Formula 1 Qatar Grand Prix 2024–2025.",
-      "Security monitoring across 8 FIFA World Cup stadiums, Aspetar Sports Hospital, Aspire Academy, Lusail Circuit using Microsoft Sentinel, Cortex XDR, SentinelOne, Trend Micro XDR, Darktrace.",
-      "Collaborated with Qatar National Cyber Security Agency (NCSA) on threat intelligence sharing and national security initiatives.",
+    bullets: [
+      "Security posture assessments across SIEM, XDR, and cloud environments with risk-based recommendations.",
+      "Built Cortex XSOAR playbooks for enrichment, containment, and response automation.",
+      "Led threat hunting targeting APT39, MuddyWater, ClickFix using MITRE ATT&CK-mapped hypotheses.",
+      "SOC monitoring for FIFA Intercontinental Cup, Arab Cup, and F1 Qatar Grand Prix 2024–2025.",
+      "Monitoring across 8 FIFA World Cup stadiums using Sentinel, Cortex XDR, SentinelOne, Darktrace.",
+      "Collaborated with Qatar NCSA on threat intel sharing and national security initiatives.",
+      "Investigated ransomware activity affecting critical infrastructure.",
     ],
   },
   {
     role: "Senior Analyst",
     company: "Interactive Avenues (IPG) | WPP",
     location: "Mumbai, India",
-    period: "March 2023 – December 2023",
-    highlights: [
-      "Conducted website security audits, identifying and mitigating XSS vulnerabilities, malicious JavaScript injections.",
-      "Implemented data security measures and access controls for internal BI tools.",
-      "Developed Python scripts to detect anomalies, bots, and suspicious activity in digital marketing campaigns.",
+    period: "Mar 2023 – Dec 2023",
+    bullets: [
+      "Website security audits — mitigated XSS vulnerabilities and malicious JS injections.",
+      "Implemented role-based access controls for internal BI tools.",
+      "Python automation for anomaly and bot detection in marketing campaigns.",
     ],
   },
   {
-    role: "Executive – Analytics and Reporting",
+    role: "Executive – Analytics & Reporting",
     company: "Group M",
     location: "Bengaluru, India",
-    period: "June 2021 – June 2023",
-    highlights: [
-      "Delivered data-driven solutions for Disney Hotstar, Ikea, Meesho, Amway, and Kimberly Clark.",
-      "Expertise in Power BI, Salesforce Datorama, SQL, and data platform management.",
+    period: "Jun 2021 – Jun 2023",
+    bullets: [
+      "Data-driven solutions for Disney Hotstar, Ikea, Meesho, Amway, Kimberly Clark.",
+      "Power BI, Salesforce Datorama, SQL-based reporting and analytics.",
     ],
   },
 ];
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-24">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-3 mb-12"
-        >
-          <Briefcase className="w-5 h-5 text-primary" />
-          <h2 className="text-sm font-mono text-primary uppercase tracking-widest">// Experience</h2>
-        </motion.div>
+    <section id="experience" className="py-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 className="text-base font-semibold text-foreground mb-6 flex items-center gap-2">
+          <GitCommitHorizontal className="w-4 h-4 text-muted-foreground" />
+          Experience
+        </h2>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent hidden md:block" />
+        <div className="space-y-1">
+          {experiences.map((exp, i) => (
+            <div key={i} className="relative pl-6 pb-8 border-l border-border last:pb-0">
+              {/* Dot */}
+              <div className="absolute left-[-5px] top-1.5 w-[9px] h-[9px] rounded-full bg-primary border-2 border-background" />
 
-          <div className="space-y-10">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="relative md:pl-8"
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full border-2 border-primary bg-background hidden md:block" />
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 className="text-sm font-semibold text-foreground">{exp.role}</h3>
+                <span className="text-xs text-muted-foreground flex items-center gap-1">
+                  <Calendar className="w-3 h-3" /> {exp.period}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground mt-0.5">{exp.company} · {exp.location}</p>
 
-                <div className="rounded-lg border border-border bg-card p-6 hover:border-primary/20 transition-colors">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-                    <h3 className="font-display font-bold text-lg text-foreground">{exp.role}</h3>
-                    <span className="text-xs font-mono text-primary">{exp.period}</span>
-                  </div>
-                  {exp.prevRole && (
-                    <p className="text-xs font-mono text-muted-foreground mb-1">Previously: {exp.prevRole}</p>
-                  )}
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {exp.company} · {exp.location}
-                  </p>
-                  <ul className="space-y-2">
-                    {exp.highlights.map((h, j) => (
-                      <li key={j} className="flex gap-2 text-sm text-foreground/80">
-                        <span className="text-primary mt-1 shrink-0">▹</span>
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              <ul className="mt-3 space-y-1.5">
+                {exp.bullets.map((b, j) => (
+                  <li key={j} className="text-sm text-foreground/80 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0 before:text-muted-foreground">
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>

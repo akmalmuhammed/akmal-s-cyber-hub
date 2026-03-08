@@ -1,62 +1,39 @@
-import { motion } from "framer-motion";
 import { Award, GraduationCap } from "lucide-react";
 
 const certs = [
-  { name: "Microsoft Certified: Security Operations Analyst Associate (SC-200)", status: "earned" },
-  { name: "CyberSec First Responder: Threat Detection and Response (CFR)", status: "earned" },
-  { name: "ISC2 CCSP", status: "pursuing" },
-  { name: "IBM Data Analyst Specialization", status: "earned" },
+  { name: "Microsoft SC-200 — Security Operations Analyst Associate", done: true },
+  { name: "CyberSec First Responder (CFR) — Threat Detection & Response", done: true },
+  { name: "IBM Data Analyst Specialization", done: true },
+  { name: "ISC2 CCSP", done: false },
 ];
 
 const CertificationsSection = () => {
   return (
-    <section id="certifications" className="py-24">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-3 mb-12"
-        >
-          <Award className="w-5 h-5 text-primary" />
-          <h2 className="text-sm font-mono text-primary uppercase tracking-widest">// Certifications & Education</h2>
-        </motion.div>
+    <section id="certifications" className="py-10 border-t border-border">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <h2 className="text-base font-semibold text-foreground mb-6">Certifications & Education</h2>
 
         {/* Education */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="rounded-lg border border-border bg-card p-6 mb-6 flex items-start gap-4"
-        >
-          <GraduationCap className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+        <div className="flex items-start gap-3 mb-6 p-3 rounded-md bg-card border border-border">
+          <GraduationCap className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
           <div>
-            <h3 className="font-display font-bold text-foreground">B.Tech in Computer Science and Engineering</h3>
-            <p className="text-sm text-muted-foreground">National Institute of Technology – Puducherry, India</p>
+            <p className="text-sm font-semibold text-foreground">B.Tech — Computer Science & Engineering</p>
+            <p className="text-xs text-muted-foreground">National Institute of Technology, Puducherry</p>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Certifications */}
-        <div className="grid gap-4 md:grid-cols-2">
-          {certs.map((cert, i) => (
-            <motion.div
-              key={cert.name}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="rounded-lg border border-border bg-card p-5 flex items-start gap-3 hover:border-primary/20 transition-colors"
-            >
-              <Award className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-semibold text-foreground">{cert.name}</p>
-                {cert.status === "pursuing" && (
-                  <span className="text-[10px] font-mono text-accent mt-1 inline-block px-2 py-0.5 rounded bg-accent/10 border border-accent/20">
-                    IN PROGRESS
-                  </span>
-                )}
-              </div>
-            </motion.div>
+        {/* Certs */}
+        <div className="space-y-2">
+          {certs.map((c) => (
+            <div key={c.name} className="flex items-center gap-3 text-sm">
+              <Award className="w-4 h-4 text-muted-foreground shrink-0" />
+              <span className="text-foreground/90">{c.name}</span>
+              {!c.done && (
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-gh-yellow/15 text-gh-yellow border border-gh-yellow/20 font-medium">
+                  In Progress
+                </span>
+              )}
+            </div>
           ))}
         </div>
       </div>
