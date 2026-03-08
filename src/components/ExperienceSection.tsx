@@ -56,8 +56,8 @@ const ExperienceSection = () => {
     <section id="experience" className="py-20">
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
         <motion.div {...fadeUp} className="mb-10">
-          <p className="text-xs font-medium text-primary uppercase tracking-widest mb-2">Career</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Work Experience</h2>
+          <p className="text-xs font-mono font-medium text-primary uppercase tracking-widest mb-2">// career</p>
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground">Work Experience</h2>
         </motion.div>
 
         <div className="space-y-4">
@@ -70,16 +70,16 @@ const ExperienceSection = () => {
             >
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                 <div>
-                  <h3 className="text-base font-semibold text-foreground flex items-center gap-2">
+                  <h3 className="text-base font-display font-bold text-foreground flex items-center gap-2">
                     {exp.role}
-                    {exp.type && <span className="text-xs font-normal text-muted-foreground">· {exp.type}</span>}
+                    {exp.type && <span className="text-xs font-mono font-normal text-muted-foreground">// {exp.type}</span>}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-0.5">
+                  <p className="text-sm font-mono text-muted-foreground mt-0.5">
                     {exp.company}
                     {exp.client && <span className="text-primary/80"> → {exp.client}</span>}
                   </p>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground whitespace-nowrap shrink-0">
+                <span className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground whitespace-nowrap shrink-0">
                   <Calendar className="w-3 h-3" /> {exp.period}
                 </span>
               </div>
@@ -95,7 +95,7 @@ const ExperienceSection = () => {
 
               <div className="flex flex-wrap gap-1.5">
                 {exp.tags.map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 text-[11px] font-medium rounded-md bg-secondary text-secondary-foreground">
+                  <span key={tag} className="px-2 py-0.5 text-[11px] font-mono font-medium rounded-md bg-secondary text-secondary-foreground">
                     {tag}
                   </span>
                 ))}

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Zap, Shield, Wrench } from "lucide-react";
+import { ExternalLink, Shield, Wrench, Zap } from "lucide-react";
 
 const projects = [
   {
@@ -8,7 +8,7 @@ const projects = [
     description: "B2B platform reducing SOC workload by 85% through automated phishing detection. 11 detection modules, admin panel, Stripe billing.",
     tags: ["Next.js", "Prisma", "Stripe"],
     icon: Shield,
-    gradient: "from-primary/20 to-purple-500/10",
+    gradient: "from-primary/20 to-gh-purple/10",
   },
   {
     title: "CyberTools Hub",
@@ -39,8 +39,8 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20">
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
         <motion.div {...fadeUp} className="mb-10">
-          <p className="text-xs font-medium text-primary uppercase tracking-widest mb-2">Portfolio</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Key Projects</h2>
+          <p className="text-xs font-mono font-medium text-primary uppercase tracking-widest mb-2">// portfolio</p>
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground">Key Projects</h2>
         </motion.div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -51,9 +51,7 @@ const ProjectsSection = () => {
               transition={{ delay: i * 0.1 }}
               className="group rounded-xl border border-border bg-card overflow-hidden hover-lift"
             >
-              {/* Gradient header */}
               <div className={`h-1.5 bg-gradient-to-r ${p.gradient}`} />
-
               <div className="p-5">
                 <div className="flex items-start justify-between mb-3">
                   <div className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center">
@@ -61,14 +59,12 @@ const ProjectsSection = () => {
                   </div>
                   <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-
-                <h3 className="text-sm font-semibold text-foreground mb-0.5">{p.title}</h3>
-                <p className="text-xs text-primary/70 mb-3">{p.tagline}</p>
+                <h3 className="text-sm font-display font-bold text-foreground mb-0.5">{p.title}</h3>
+                <p className="text-xs font-mono text-primary/70 mb-3">{p.tagline}</p>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-4">{p.description}</p>
-
                 <div className="flex flex-wrap gap-1.5">
                   {p.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 text-[10px] font-medium rounded-md bg-secondary text-secondary-foreground">
+                    <span key={tag} className="px-2 py-0.5 text-[10px] font-mono font-medium rounded-md bg-secondary text-secondary-foreground">
                       {tag}
                     </span>
                   ))}
