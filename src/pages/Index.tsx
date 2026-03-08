@@ -12,9 +12,6 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="border-t border-border" />
-      </div>
       <ExperienceSection />
       <ProjectsSection />
       <SkillsSection />

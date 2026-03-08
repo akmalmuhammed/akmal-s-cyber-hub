@@ -1,20 +1,24 @@
-import { GitCommitHorizontal, Calendar } from "lucide-react";
+import { motion } from "framer-motion";
+import { Calendar, ChevronRight } from "lucide-react";
 
 const experiences = [
   {
-    role: "Security Consultant – Information Security",
-    company: "INTALEQ Technology & Consulting | Aspire Zone Foundation",
+    role: "Security Consultant",
+    type: "Information Security",
+    company: "INTALEQ Technology & Consulting",
+    client: "Aspire Zone Foundation",
     location: "Doha, Qatar",
     period: "Feb 2024 – Present",
     bullets: [
-      "Security posture assessments across SIEM, XDR, and cloud environments with risk-based recommendations.",
-      "Built Cortex XSOAR playbooks for enrichment, containment, and response automation.",
-      "Led threat hunting targeting APT39, MuddyWater, ClickFix using MITRE ATT&CK-mapped hypotheses.",
-      "SOC monitoring for FIFA Intercontinental Cup, Arab Cup, and F1 Qatar Grand Prix 2024–2025.",
-      "Monitoring across 8 FIFA World Cup stadiums using Sentinel, Cortex XDR, SentinelOne, Darktrace.",
+      "Security posture assessments across SIEM, XDR, and cloud environments with risk-based improvements.",
+      "Built Cortex XSOAR playbooks — significantly improved investigation and response times.",
+      "Led threat hunting targeting APT39, MuddyWater, ClickFix with MITRE ATT&CK hypotheses.",
+      "Live SOC monitoring for FIFA Intercontinental Cup, Arab Cup & F1 Qatar Grand Prix.",
+      "Monitored 8 FIFA World Cup stadiums via Sentinel, Cortex XDR, SentinelOne, Darktrace.",
       "Collaborated with Qatar NCSA on threat intel sharing and national security initiatives.",
-      "Investigated ransomware activity affecting critical infrastructure.",
+      "Investigated and contained ransomware activity on critical infrastructure.",
     ],
+    tags: ["Sentinel", "Cortex XDR", "SentinelOne", "KQL", "Python"],
   },
   {
     role: "Senior Analyst",
@@ -22,10 +26,11 @@ const experiences = [
     location: "Mumbai, India",
     period: "Mar 2023 – Dec 2023",
     bullets: [
-      "Website security audits — mitigated XSS vulnerabilities and malicious JS injections.",
-      "Implemented role-based access controls for internal BI tools.",
-      "Python automation for anomaly and bot detection in marketing campaigns.",
+      "Website security audits — mitigated XSS and malicious JavaScript injections.",
+      "Implemented RBAC for internal BI tools preventing unauthorized data exposure.",
+      "Python automation for bot/anomaly detection in digital marketing campaigns.",
     ],
+    tags: ["Security Audits", "Python", "RBAC"],
   },
   {
     role: "Executive – Analytics & Reporting",
@@ -33,43 +38,69 @@ const experiences = [
     location: "Bengaluru, India",
     period: "Jun 2021 – Jun 2023",
     bullets: [
-      "Data-driven solutions for Disney Hotstar, Ikea, Meesho, Amway, Kimberly Clark.",
-      "Power BI, Salesforce Datorama, SQL-based reporting and analytics.",
+      "Data solutions for Disney Hotstar, Ikea, Meesho, Amway, Kimberly Clark.",
+      "Power BI, Salesforce Datorama, SQL-based reporting.",
     ],
+    tags: ["Power BI", "SQL", "Datorama"],
   },
 ];
 
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+};
+
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-10">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
-        <h2 className="text-base font-semibold text-foreground mb-6 flex items-center gap-2">
-          <GitCommitHorizontal className="w-4 h-4 text-muted-foreground" />
-          Experience
-        </h2>
+    <section id="experience" className="py-20">
+      <div className="max-w-5xl mx-auto px-5 sm:px-8">
+        <motion.div {...fadeUp} className="mb-10">
+          <p className="text-xs font-medium text-primary uppercase tracking-widest mb-2">Career</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Work Experience</h2>
+        </motion.div>
 
-        <div className="space-y-1">
+        <div className="space-y-4">
           {experiences.map((exp, i) => (
-            <div key={i} className="relative pl-6 pb-8 border-l border-border last:pb-0">
-              {/* Dot */}
-              <div className="absolute left-[-5px] top-1.5 w-[9px] h-[9px] rounded-full bg-primary border-2 border-background" />
-
-              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="text-sm font-semibold text-foreground">{exp.role}</h3>
-                <span className="text-xs text-muted-foreground flex items-center gap-1">
+            <motion.div
+              key={i}
+              {...fadeUp}
+              transition={{ delay: i * 0.1 }}
+              className="rounded-xl border border-border bg-card p-5 sm:p-6 hover-lift"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                <div>
+                  <h3 className="text-base font-semibold text-foreground flex items-center gap-2">
+                    {exp.role}
+                    {exp.type && <span className="text-xs font-normal text-muted-foreground">· {exp.type}</span>}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    {exp.company}
+                    {exp.client && <span className="text-primary/80"> → {exp.client}</span>}
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground whitespace-nowrap shrink-0">
                   <Calendar className="w-3 h-3" /> {exp.period}
                 </span>
               </div>
-              <p className="text-xs text-muted-foreground mt-0.5">{exp.company} · {exp.location}</p>
 
-              <ul className="mt-3 space-y-1.5">
+              <ul className="space-y-2 mb-4">
                 {exp.bullets.map((b, j) => (
-                  <li key={j} className="text-sm text-foreground/80 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0 before:text-muted-foreground">
-                    {b}
+                  <li key={j} className="flex gap-2 text-sm text-foreground/75 leading-relaxed">
+                    <ChevronRight className="w-3.5 h-3.5 text-primary shrink-0 mt-1" />
+                    <span>{b}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+
+              <div className="flex flex-wrap gap-1.5">
+                {exp.tags.map((tag) => (
+                  <span key={tag} className="px-2 py-0.5 text-[11px] font-medium rounded-md bg-secondary text-secondary-foreground">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Overview", href: "#" },
+  { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
@@ -14,20 +15,23 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
-        scrolled ? "bg-background border-b border-border" : "bg-transparent"
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "glass border-b border-border/50" : ""
       }`}
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
-        <a href="#" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
-          akmal-muhammed
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
+        <a href="#" className="text-sm font-semibold text-foreground tracking-tight">
+          akmal<span className="text-primary">.</span>dev
         </a>
 
         <div className="hidden md:flex items-center gap-1">
@@ -35,11 +39,17 @@ const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-accent transition-colors"
+              className="px-3 py-1.5 text-[13px] text-muted-foreground hover:text-foreground rounded-lg hover:bg-accent/50 transition-all duration-200"
             >
               {l.label}
             </a>
           ))}
+          <a
+            href="mailto:akmalmuhammed93@gmail.com"
+            className="ml-3 px-4 py-1.5 text-[13px] font-medium rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+          >
+            Hire Me
+          </a>
         </div>
 
         <button className="md:hidden text-muted-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -47,21 +57,30 @@ const Navbar = () => {
         </button>
       </div>
 
-      {mobileOpen && (
-        <div className="md:hidden bg-background border-b border-border px-4 pb-3">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-sm text-muted-foreground hover:text-foreground"
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
-      )}
-    </nav>
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass border-b border-border/50 overflow-hidden"
+          >
+            <div className="px-5 pb-4 pt-1">
+              {links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
