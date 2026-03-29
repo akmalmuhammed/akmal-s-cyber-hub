@@ -9,11 +9,11 @@ const experiences = [
     company: "INTALEQ Technology & Consulting",
     client: "Aspire Zone Foundation",
     location: "Doha, Qatar",
-    period: "Feb 2024 – Present",
+    period: "Feb 2024 - Present",
     icon: Shield,
     bullets: [
       "Security posture assessments across SIEM, XDR, and cloud environments with risk-based improvements.",
-      "Built Cortex XSOAR playbooks — significantly improved investigation and response times.",
+      "Built Cortex XSOAR playbooks - significantly improved investigation and response times.",
       "Led threat hunting targeting APT39, MuddyWater, ClickFix with MITRE ATT&CK hypotheses.",
       "Live SOC monitoring for FIFA Intercontinental Cup, Arab Cup & F1 Qatar Grand Prix.",
       "Monitored 8 FIFA World Cup stadiums via Sentinel, Cortex XDR, SentinelOne, Darktrace.",
@@ -26,20 +26,20 @@ const experiences = [
     role: "Senior Analyst",
     company: "Interactive Avenues (IPG) | WPP",
     location: "Mumbai, India",
-    period: "Mar 2023 – Dec 2023",
+    period: "Mar 2023 - Dec 2023",
     icon: Radar,
     bullets: [
-      "Website security audits — mitigated XSS and malicious JavaScript injections.",
+      "Website security audits - mitigated XSS and malicious JavaScript injections.",
       "Implemented RBAC for internal BI tools preventing unauthorized data exposure.",
       "Python automation for bot/anomaly detection in digital marketing campaigns.",
     ],
     tags: ["Security Audits", "Python", "RBAC"],
   },
   {
-    role: "Executive – Analytics & Reporting",
+    role: "Executive - Analytics & Reporting",
     company: "Group M",
     location: "Bengaluru, India",
-    period: "Jun 2021 – Jun 2023",
+    period: "Jun 2021 - Jun 2023",
     icon: BarChart3,
     bullets: [
       "Data solutions for Disney Hotstar, Ikea, Meesho, Amway, Kimberly Clark.",
@@ -79,7 +79,7 @@ const ExperienceCard = ({ exp, index }: { exp: typeof experiences[0]; index: num
               <p className="text-xs font-mono text-muted-foreground mt-0.5 flex items-center gap-1.5">
                 <Building2 className="w-3 h-3" />
                 {exp.company}
-                {exp.client && <span className="text-primary/70">→ {exp.client}</span>}
+                {exp.client && <span className="text-primary/70">{"->"} {exp.client}</span>}
               </p>
             </div>
             <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-muted-foreground whitespace-nowrap shrink-0 px-2 py-0.5 rounded-md bg-secondary">

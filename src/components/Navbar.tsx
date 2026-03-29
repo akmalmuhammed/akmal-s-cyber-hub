@@ -76,7 +76,7 @@ const Navbar = () => {
             whileTap={{ scale: 0.97 }}
             className="ml-3 px-4 py-1.5 text-[13px] font-mono font-medium rounded-lg bg-primary text-primary-foreground transition-colors"
           >
-            hire_me →
+            {"hire_me ->"}
           </motion.a>
         </div>
 

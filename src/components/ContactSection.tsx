@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
-import { Mail, Linkedin, Phone, ArrowUpRight, MapPin, Copy, Check, Send } from "lucide-react";
+import { Mail, Linkedin, Phone, ArrowUpRight, MapPin, Copy, Check, Send, Download } from "lucide-react";
 import { useState, useRef } from "react";
+import { resumePdfDownloadName, resumePdfHref } from "@/lib/resume";
 
 const ContactSection = () => {
   const [copied, setCopied] = useState<string | null>(null);
@@ -103,6 +104,15 @@ const ContactSection = () => {
             className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono font-medium rounded-lg border border-border text-foreground hover:bg-accent transition-colors"
           >
             <Linkedin className="w-3.5 h-3.5" /> open_linkedin
+          </motion.a>
+          <motion.a
+            href={resumePdfHref}
+            download={resumePdfDownloadName}
+            whileHover={{ scale: 1.03, y: -1 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono font-medium rounded-lg border border-primary/20 bg-primary/[0.06] text-primary hover:bg-primary/[0.1] transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" /> download_cv.pdf
           </motion.a>
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { MapPin, Mail, Linkedin, ArrowDown, ShieldCheck, Crosshair, Cloud, Fingerprint } from "lucide-react";
+import { MapPin, Mail, Linkedin, ArrowDown, Download, ShieldCheck, Crosshair, Cloud, Fingerprint } from "lucide-react";
 import { useRef } from "react";
+import { resumePdfDownloadName, resumePdfHref } from "@/lib/resume";
 
 const HeroSection = () => {
   const ref = useRef(null);
@@ -170,17 +171,26 @@ const HeroSection = () => {
               >
                 view_work <ArrowDown className="w-3.5 h-3.5" />
               </motion.a>
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.03, y: -1 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono font-medium rounded-lg border border-border text-foreground hover:bg-accent transition-colors"
-              >
-                contact_me
-              </motion.a>
-            </motion.div>
-          </div>
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.03, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono font-medium rounded-lg border border-border text-foreground hover:bg-accent transition-colors"
+            >
+              contact_me
+            </motion.a>
+            <motion.a
+              href={resumePdfHref}
+              download={resumePdfDownloadName}
+              whileHover={{ scale: 1.03, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono font-medium rounded-lg border border-primary/20 bg-primary/[0.06] text-primary hover:bg-primary/[0.1] transition-colors"
+            >
+              <Download className="w-3.5 h-3.5" /> download_cv.pdf
+            </motion.a>
+          </motion.div>
         </div>
+      </div>
 
         {/* Stats */}
         <motion.div

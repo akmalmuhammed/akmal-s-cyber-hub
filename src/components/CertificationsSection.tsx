@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const certs = [
   { name: "Microsoft SC-200", desc: "Security Operations Analyst Associate", done: true, icon: BadgeCheck },
-  { name: "CFR", desc: "CyberSec First Responder — Threat Detection & Response", done: true, icon: BadgeCheck },
+  { name: "CFR", desc: "CyberSec First Responder - Threat Detection & Response", done: true, icon: BadgeCheck },
   { name: "IBM Data Analyst", desc: "Data Analyst Specialization", done: true, icon: BookOpen },
   { name: "ISC2 CCSP", desc: "Certified Cloud Security Professional", done: false, icon: BookOpen },
 ];
@@ -38,7 +38,7 @@ const CertificationsSection = () => {
             <GraduationCap className="w-5 h-5 text-primary" />
           </motion.div>
           <div>
-            <h3 className="text-sm font-display font-bold text-foreground">B.Tech — Computer Science & Engineering</h3>
+            <h3 className="text-sm font-display font-bold text-foreground">B.Tech - Computer Science & Engineering</h3>
             <p className="text-xs font-mono text-muted-foreground mt-0.5">National Institute of Technology, Puducherry</p>
           </div>
         </motion.div>

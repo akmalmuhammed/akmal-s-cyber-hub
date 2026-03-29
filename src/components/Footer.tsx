@@ -11,7 +11,7 @@ const Footer = () => (
         className="flex items-center gap-2"
       >
         <Terminal className="w-3 h-3 text-primary/50" />
-        <span>© 2025 akmal_muhammed</span>
+        <span>(c) 2025 akmal_muhammed</span>
       </motion.div>
       <motion.span
         initial={{ opacity: 0 }}
